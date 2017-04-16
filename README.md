@@ -154,3 +154,4 @@ To configure CI for your project, run the ci-cd sub-generator (`yo jhipster:ci-c
 [DefinitelyTyped]: http://definitelytyped.org/
 "# carservice" 
 "# carservice" 
+"# carservice" 
