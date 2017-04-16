@@ -1,0 +1,110 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myVisitLabel" jhiTranslate="carserviceappApp.visit.home.createOrEditLabel">Create or edit a Visit</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!visit.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="visit.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="carserviceappApp.visit.km" for="field_km">Km</label>
+            <input type="number" class="form-control" name="km" id="field_km"
+                [(ngModel)]="visit.km"
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="carserviceappApp.visit.date" for="field_date">Date</label>
+            <div class="d-flex">
+                <input id="field_date" type="datetime-local" class="form-control" name="date" [(ngModel)]="visit.date"
+                required  />
+            </div>
+            <div [hidden]="!(editForm.controls.date?.dirty && editForm.controls.date?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.date?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.date?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="carserviceappApp.visit.partsCost" for="field_partsCost">Parts Cost</label>
+            <input type="number" class="form-control" name="partsCost" id="field_partsCost"
+                [(ngModel)]="visit.partsCost"
+            required />
+            <div [hidden]="!(editForm.controls.partsCost?.dirty && editForm.controls.partsCost?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.partsCost?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.partsCost?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="carserviceappApp.visit.workCost" for="field_workCost">Work Cost</label>
+            <input type="number" class="form-control" name="workCost" id="field_workCost"
+                [(ngModel)]="visit.workCost"
+            required />
+            <div [hidden]="!(editForm.controls.workCost?.dirty && editForm.controls.workCost?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.workCost?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.workCost?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="carserviceappApp.visit.allCost" for="field_allCost">All Cost</label>
+            <input type="number" class="form-control" name="allCost" id="field_allCost"
+                [(ngModel)]="visit.allCost"
+            required />
+            <div [hidden]="!(editForm.controls.allCost?.dirty && editForm.controls.allCost?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.allCost?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.allCost?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label jhiTranslate="carserviceappApp.visit.car" for="field_car">Car</label>
+            <select class="form-control" id="field_car" name="car" [(ngModel)]="visit.car" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="carOption.id === visit.car?.id ? visit.car : carOption" *ngFor="let carOption of cars; trackBy: trackCarById">{{carOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label jhiTranslate="carserviceappApp.visit.worker" for="field_worker">Worker</label>
+            <select class="form-control" id="field_worker" name="worker" [(ngModel)]="visit.worker" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="workerOption.id === visit.worker?.id ? visit.worker : workerOption" *ngFor="let workerOption of workers; trackBy: trackWorkerById">{{workerOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

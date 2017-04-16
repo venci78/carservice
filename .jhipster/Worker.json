@@ -1,0 +1,29 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "visit",
+            "otherEntityName": "visit",
+            "otherEntityRelationshipName": "worker"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "postition",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170416203639",
+    "entityTableName": "worker",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

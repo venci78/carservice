@@ -41,6 +41,16 @@ public class CacheConfiguration {
             cm.createCache(com.vencislav.carserviceapp.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(com.vencislav.carserviceapp.domain.User.class.getName() + ".authorities", jcacheConfiguration);
             cm.createCache(com.vencislav.carserviceapp.domain.SocialUserConnection.class.getName(), jcacheConfiguration);
+            cm.createCache(com.vencislav.carserviceapp.domain.Owner.class.getName(), jcacheConfiguration);
+            cm.createCache(com.vencislav.carserviceapp.domain.Owner.class.getName() + ".cars", jcacheConfiguration);
+            cm.createCache(com.vencislav.carserviceapp.domain.Car.class.getName(), jcacheConfiguration);
+            cm.createCache(com.vencislav.carserviceapp.domain.Car.class.getName() + ".visits", jcacheConfiguration);
+            cm.createCache(com.vencislav.carserviceapp.domain.Mem.class.getName(), jcacheConfiguration);
+            cm.createCache(com.vencislav.carserviceapp.domain.Visit.class.getName(), jcacheConfiguration);
+            cm.createCache(com.vencislav.carserviceapp.domain.Part.class.getName(), jcacheConfiguration);
+            cm.createCache(com.vencislav.carserviceapp.domain.Work.class.getName(), jcacheConfiguration);
+            cm.createCache(com.vencislav.carserviceapp.domain.Worker.class.getName(), jcacheConfiguration);
+            cm.createCache(com.vencislav.carserviceapp.domain.Worker.class.getName() + ".visits", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

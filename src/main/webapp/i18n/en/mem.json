@@ -1,0 +1,25 @@
+{
+    "carserviceappApp": {
+        "mem" : {
+            "home": {
+                "title": "Mems",
+                "createLabel": "Create a new Mem",
+                "createOrEditLabel": "Create or edit a Mem"
+            },
+            "created": "A new Mem is created with identifier {{ param }}",
+            "updated": "A Mem is updated with identifier {{ param }}",
+            "deleted": "A Mem is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Mem {{ id }}?"
+            },
+            "detail": {
+                "title": "Mem"
+            },
+            "date": "Date",
+            "km": "Km",
+            "afterDate": "After Date",
+            "afterKm": "After Km",
+            "comment": "Comment"
+        }
+    }
+}

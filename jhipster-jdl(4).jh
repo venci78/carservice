@@ -1,0 +1,73 @@
+
+
+
+entity Owner {
+	name String required,
+    address String,
+    tel String required
+}
+entity Car {
+	reg String required,
+    brand String required,
+    model String,
+    comment String,
+ 
+}
+relationship OneToMany {
+    Owner to Car{owner}
+}
+
+entity Mem{
+ 
+    date ZonedDateTime required,
+    km Long required,
+    afterDate ZonedDateTime,
+    afterKm Long,
+    comment String
+}
+
+entity Visit{
+ 
+    km Long,
+    date ZonedDateTime required,
+    partsCost BigDecimal required,
+    workCost BigDecimal required,
+    allCost BigDecimal required 
+}
+relationship OneToMany {
+	Car to Visit{car}
+}
+relationship OneToMany {
+	Worker to Visit{worker}
+}
+entity Part{
+ 
+ part String required,
+ quantity Long required,
+ priceOne BigDecimal required,
+ cost BigDecimal required
+
+}
+relationship ManyToOne {
+	Part{visit} to Visit,
+    Work{visit} to Visit
+    
+}
+
+
+entity Work {
+ 
+work String required,
+quantity Long required,
+ priceOne BigDecimal required,
+ cost BigDecimal required
+
+}
+
+entity Worker{
+ name String required,
+ postition String
+
+}
+
+

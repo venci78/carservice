@@ -1,0 +1,41 @@
+
+<div *ngIf="mem">
+    <h2><span jhiTranslate="carserviceappApp.mem.detail.title">Mem</span> {{mem.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="carserviceappApp.mem.date">Date</span></dt>
+        <dd>
+            <span>{{mem.date | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="carserviceappApp.mem.km">Km</span></dt>
+        <dd>
+            <span>{{mem.km}}</span>
+        </dd>
+        <dt><span jhiTranslate="carserviceappApp.mem.afterDate">After Date</span></dt>
+        <dd>
+            <span>{{mem.afterDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="carserviceappApp.mem.afterKm">After Km</span></dt>
+        <dd>
+            <span>{{mem.afterKm}}</span>
+        </dd>
+        <dt><span jhiTranslate="carserviceappApp.mem.comment">Comment</span></dt>
+        <dd>
+            <span>{{mem.comment}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'mem/'+ mem.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

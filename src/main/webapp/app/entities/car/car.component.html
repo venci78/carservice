@@ -1,0 +1,68 @@
+<div>
+    <h2>
+        <span jhiTranslate="carserviceappApp.car.home.title">Cars</span>
+        <button class="btn btn-primary float-right create-car" [routerLink]="['/', { outlets: { popup: ['car-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="carserviceappApp.car.home.createLabel">
+            Create new Car
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="cars">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="carserviceappApp.car.reg">Reg</span></th>
+            <th><span jhiTranslate="carserviceappApp.car.brand">Brand</span></th>
+            <th><span jhiTranslate="carserviceappApp.car.model">Model</span></th>
+            <th><span jhiTranslate="carserviceappApp.car.comment">Comment</span></th>
+            <th><span jhiTranslate="carserviceappApp.car.owner">Owner</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let car of cars ;trackBy: trackId">
+                <td><a [routerLink]="['../car', car.id ]">{{car.id}}</a></td>
+                <td>{{car.reg}}</td>
+                <td>{{car.brand}}</td>
+                <td>{{car.model}}</td>
+                <td>{{car.comment}}</td>
+                <td>
+                    <div *ngIf="car.owner">
+                        <a [routerLink]="['../owner', car.owner?.id ]" >{{car.owner?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../car', car.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'car/'+ car.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'car/'+ car.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

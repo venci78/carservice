@@ -1,0 +1,37 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "date",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "km",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "afterDate",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "afterKm",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "comment",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170416203635",
+    "entityTableName": "mem",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

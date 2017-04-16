@@ -1,0 +1,68 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myCarLabel" jhiTranslate="carserviceappApp.car.home.createOrEditLabel">Create or edit a Car</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!car.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="car.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="carserviceappApp.car.reg" for="field_reg">Reg</label>
+            <input type="text" class="form-control" name="reg" id="field_reg"
+                [(ngModel)]="car.reg"
+            required />
+            <div [hidden]="!(editForm.controls.reg?.dirty && editForm.controls.reg?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.reg?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="carserviceappApp.car.brand" for="field_brand">Brand</label>
+            <input type="text" class="form-control" name="brand" id="field_brand"
+                [(ngModel)]="car.brand"
+            required />
+            <div [hidden]="!(editForm.controls.brand?.dirty && editForm.controls.brand?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.brand?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="carserviceappApp.car.model" for="field_model">Model</label>
+            <input type="text" class="form-control" name="model" id="field_model"
+                [(ngModel)]="car.model"
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="carserviceappApp.car.comment" for="field_comment">Comment</label>
+            <input type="text" class="form-control" name="comment" id="field_comment"
+                [(ngModel)]="car.comment"
+             />
+        </div>
+
+        <div class="form-group">
+            <label jhiTranslate="carserviceappApp.car.owner" for="field_owner">Owner</label>
+            <select class="form-control" id="field_owner" name="owner" [(ngModel)]="car.owner" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="ownerOption.id === car.owner?.id ? car.owner : ownerOption" *ngFor="let ownerOption of owners; trackBy: trackOwnerById">{{ownerOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

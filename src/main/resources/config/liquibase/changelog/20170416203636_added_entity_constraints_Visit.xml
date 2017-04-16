@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity Visit.
+    -->
+    <changeSet id="20170416203636-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="car_id"
+                                 baseTableName="visit"
+                                 constraintName="fk_visit_car_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="car"/>
+
+        <addForeignKeyConstraint baseColumnNames="worker_id"
+                                 baseTableName="visit"
+                                 constraintName="fk_visit_worker_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="worker"/>
+
+    </changeSet>
+</databaseChangeLog>

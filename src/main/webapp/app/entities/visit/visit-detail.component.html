@@ -1,0 +1,53 @@
+
+<div *ngIf="visit">
+    <h2><span jhiTranslate="carserviceappApp.visit.detail.title">Visit</span> {{visit.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="carserviceappApp.visit.km">Km</span></dt>
+        <dd>
+            <span>{{visit.km}}</span>
+        </dd>
+        <dt><span jhiTranslate="carserviceappApp.visit.date">Date</span></dt>
+        <dd>
+            <span>{{visit.date | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="carserviceappApp.visit.partsCost">Parts Cost</span></dt>
+        <dd>
+            <span>{{visit.partsCost}}</span>
+        </dd>
+        <dt><span jhiTranslate="carserviceappApp.visit.workCost">Work Cost</span></dt>
+        <dd>
+            <span>{{visit.workCost}}</span>
+        </dd>
+        <dt><span jhiTranslate="carserviceappApp.visit.allCost">All Cost</span></dt>
+        <dd>
+            <span>{{visit.allCost}}</span>
+        </dd>
+        <dt><span jhiTranslate="carserviceappApp.visit.car">Car</span></dt>
+        <dd>
+            <div *ngIf="visit.car">
+                <a [routerLink]="['/car', visit.car?.id]">{{visit.car?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="carserviceappApp.visit.worker">Worker</span></dt>
+        <dd>
+            <div *ngIf="visit.worker">
+                <a [routerLink]="['/worker', visit.worker?.id]">{{visit.worker?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'visit/'+ visit.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

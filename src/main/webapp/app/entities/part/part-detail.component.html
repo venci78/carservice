@@ -1,0 +1,43 @@
+
+<div *ngIf="part">
+    <h2><span jhiTranslate="carserviceappApp.part.detail.title">Part</span> {{part.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="carserviceappApp.part.part">Part</span></dt>
+        <dd>
+            <span>{{part.part}}</span>
+        </dd>
+        <dt><span jhiTranslate="carserviceappApp.part.quantity">Quantity</span></dt>
+        <dd>
+            <span>{{part.quantity}}</span>
+        </dd>
+        <dt><span jhiTranslate="carserviceappApp.part.priceOne">Price One</span></dt>
+        <dd>
+            <span>{{part.priceOne}}</span>
+        </dd>
+        <dt><span jhiTranslate="carserviceappApp.part.cost">Cost</span></dt>
+        <dd>
+            <span>{{part.cost}}</span>
+        </dd>
+        <dt><span jhiTranslate="carserviceappApp.part.visit">Visit</span></dt>
+        <dd>
+            <div *ngIf="part.visit">
+                <a [routerLink]="['/visit', part.visit?.id]">{{part.visit?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'part/'+ part.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>
